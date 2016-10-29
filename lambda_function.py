@@ -46,7 +46,7 @@ from base64 import b64decode
 from urlparse import parse_qs
 
 
-ENCRYPTED_EXPECTED_TOKEN = '<kmsEncryptedToken>'  # Enter the base-64 encoded, encrypted Slack command token (CiphertextBlob)
+ENCRYPTED_EXPECTED_TOKEN = 'AQECAHh06v4R9Jpay8c8sFQsbSEgHWNFNN56C4gRgm416qhb8QAAAHYwdAYJKoZIhvcNAQcGoGcwZQIBADBgBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDG/SaAVKGyh0221jzAIBEIAzVE4cJ2sjGjqrCntML4iduhvXjlGQXdr5s/WHi+T5LpDvc98hRRfEO9pvwPjijw5AQSKF'  # Enter the base-64 encoded, encrypted Slack command token (CiphertextBlob)
 
 kms = boto3.client('kms')
 expected_token = kms.decrypt(CiphertextBlob=b64decode(ENCRYPTED_EXPECTED_TOKEN))['Plaintext']
